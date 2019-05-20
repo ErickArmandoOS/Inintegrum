@@ -1,0 +1,120 @@
+<div class="row">
+  <div class="col-md-6">
+    <button data-toggle="modal" data-target="#fechasModal" class="btn btn-primary" (click)="obtControlNo()">Agregar Fecha Próxima</button>
+  </div>
+  <div class="col-md-6">
+
+
+
+  </div>
+</div>
+<br>
+<br>
+
+
+<div class="modal fade" id="fechasModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Agregar Fecha Próxima</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+
+          <div class="form-group">
+              <label for="sel1">Seleccionar Control:</label>
+              <select name="control" #control="ngModel" [(ngModel)]="service.formData.control" class="form-control"
+                required>
+                <option value="">Selecciona una</option>
+                <option *ngFor="let asunto of asuntos | async">
+                  {{asunto.control}}
+                </option>
+              </select>
+            </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="sel1"> Hora: </label>
+              <input name="hora" #hora="ngModel" [(ngModel)]="service.formData.hora" class="form-hora"
+                required type="time" id="sel1">
+              <!-- <div *ngIf="nombre.invalid && nombre.touched" class="validation-error">This field is required.</div> -->
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="sel1"> Fecha: </label>
+            <div class="form-group col-md-12">
+              <input id="sel1" placeholder="fecha de asignación" name="fecha" #fecha="ngModel"
+                [(ngModel)]="service.formData.fecha" class="form-control" type="date">
+            </div>
+          </div>
+
+
+
+          <label for="typeahead-focus">Seleccionar Suceso/Diligencia: </label>
+          <input id="typeahead-focus" type="text" class="form-control" [ngbTypeahead]="search"
+            (focus)="focus$.next($event.target.value)" (click)="click$.next($event.target.value)"
+            #instance="ngbTypeahead" name="diligencia" #dilicencia="ngModel" [(ngModel)]="service.formData.diligencia"
+            class="form-control" />
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="sel1">Con Cargo A:</label>
+              <select class="custom-select" id="sel1" aria-label="Example select with button addon" name="concargoa"
+                #concargoa="ngModel" [(ngModel)]="service.formData.concargoa" class="form-control">
+                <option value="ABSOLVENTE">ABSOLVENTE</option>
+                <option value="DEMANDADO FÍSICO">DEMANDADO FÍSICO</option>
+                <option value="DIVERSA DEMANDADA">DIVERSA DEMANDADA</option>
+                <option value="IMSS">IMSS</option>
+                <option value="PARTE ACTORA">PARTE ACTORA</option>
+                <option value="PARTE DEMANDADA">PARTE DEMANDADA</option>
+                <option value="PARTES">PARTES</option>
+                <option value="PERITO ACTOR">PERITO ACTOR</option>
+                <option value="PERITO EMPRESA">PERITO EMPRESA</option>
+                <option value="PERITO MÉDICO">PERITO MÉDICO</option>
+                <option value="PERITO TERCERO">PERITO TERCERO</option>
+                <option value="RATIFICANTE">RATIFICANTE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="sel1">Lugar: </label>
+              <select class="custom-select" id="sel1" aria-label="Example select with button addon" name="lugar"
+                #lugar="ngModel" [(ngModel)]="service.formData.lugar" class="form-control">
+
+                <option value="DIVERSO DOMICILIO">DIVERSO DOMICILIO</option>
+                <option value="FUENTE DE TRABAJO">FUENTE DE TRABAJO</option>
+                <option value="IMSS">IMSS</option>
+                <option value="JUNTA">JUNTA</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info" onclick="$('.modal').modal('hide')">Guardar</button>
+          </div>
+
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+    <br>
+    <br>
+      
+       
+      <!-- Tabla de todos los asuntos 
+  
+      <table class="table table-striped">
+        <thead>
+          <th>Número</th>
+          <!-- <th>Control</th> --
+          <th>Fecha</th>
+          <th>Suceso</th>
+          <th>Atendió</th>
+          <th>Descripción</th>
+          <th>Opciones</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asu of list; let i=index">
+  
+            
+            <td>{{asu.numero}}</td>
+            <!-- <td>{{asu.control}}</td> --
+            <td>{{asu.fecha}}</td>
+            <td>{{asu.suceso}}</td>
+            <td>{{asu.atendio}}</td>
+            <td>{{asu.desc}}</td>
+            <td><a class="btn text-danger" (click)="onDelete(asu.id)"><i class="fa fa-trash"></i></a></td>
+          </tr>
+  
+        </tbody>
+      </table>
+  
+    </div>
+  </div> -->
+
+
+
+  <div class="row">
+      <div class="col-md-12">
+          <ng2-smart-table 
+          [settings]="settings" 
+          [source]="lista" >
+          </ng2-smart-table>
+      </div>
+    </div>

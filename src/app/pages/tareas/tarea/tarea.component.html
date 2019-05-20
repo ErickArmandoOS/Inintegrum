@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-6">
+    <button data-toggle="modal" data-target="#tareasModal" class="btn btn-primary" (click)="obtControlNo()">Crear tarea</button>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="modal fade" id="tareasModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Crear Tarea</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+          <div class="form-group">
+            <label for="sel1">Seleccionar Control:</label>
+            <select name="control" #control="ngModel" [(ngModel)]="service.formData.control" class="form-control"
+              required>
+              <option value="">Selecciona una</option>
+              <option *ngFor="let asunto of asuntos | async">
+                {{asunto.control}}
+              </option>
+            </select>
+          </div>
+
+            <div class="form-group">
+              <label for="fechaasig"> Fecha de Asignación</label>
+              <input placeholder="Fecha de asignación" name="fechaasig" #fechaasig="ngModel"
+                [(ngModel)]="service.formData.fechaasig" class="form-control" type="date">
+
+            </div>
+
+            <div class="form-group">
+              <label for="fechaasig"> Fecha Límite</label>
+              <input placeholder="Fecha Limite" name="fechalim" #fechalim="ngModel"
+                [(ngModel)]="service.formData.fechalim" class="form-control" type="date">
+
+            </div>
+
+            <div class="form-group">
+              <textarea nbInput fullWidth placeholder="Descripción de la tarea" name="tarea" #tarea="ngModel"
+                [(ngModel)]="service.formData.tarea" class="form-control"></textarea>
+              <!-- <div *ngIf="nombre.invalid && nombre.touched" class="validation-error">This field is required.</div> -->
+            </div>
+
+            <div class="form-row">
+              <div class="form-group  col-md-12">
+                <label for="sel1">Responsable:</label>
+                <select class="form-control" name="responsable" #responsable="ngModel"
+                  [(ngModel)]="service.formData.responsable" class="form-control" id="sel1" >
+                  <!-- de las usarios creadas agragar un ngFor -->
+                  <option value="">Selecciona un Responsable:  </option>
+                  <option class="hybCat" *ngFor="let usuario of usuarios | async">
+                    {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}}
+                  </option>
+   
+                </select>
+              </div>
+            </div>
+
+            
+
+            <div class="form-group">
+              <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info"
+                onclick="$('.modal').modal('hide')">Guardar</button>
+            </div>
+
+        </form>
+
+        <!-- fin del contenido -->
+
+        <div class="modal-footer">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

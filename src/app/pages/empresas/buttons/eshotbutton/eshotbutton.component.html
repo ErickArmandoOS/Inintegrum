@@ -1,0 +1,132 @@
+<a class="btn text-warning" data-toggle="modal" data-target="#infoModal" ><i class="fa fa-eye" (click)="onClick()"></i>{{ renderValue }}</a>
+
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Agregar Empresa</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" >
+          
+
+
+          <!-- Queda pendiente el hecho de poner todos los enlaces -->
+          
+
+
+          <div class="form-group">
+            <nb-accordion>
+              <nb-accordion-item>
+                <nb-accordion-item-header>Datos de Enlace 1</nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    <div class="form-group">
+                        <input name="enlace1" #enlace1="ngModel" [(ngModel)]="service.formData.enlace1" class="form-control"
+                          placeholder="Enlace">
+                      </div>
+                  <div class="form-group">
+                    <input name="telfono1" #telefono1="ngModel" [(ngModel)]="service.formData.telefono1"
+                      class="form-control" placeholder="Teléfono">
+                  </div>
+
+                  <div class="form-group">
+                    <input name="correo1" #correo1="ngModel" [(ngModel)]="service.formData.correo1" class="form-control"
+                      placeholder="Correo">
+                  </div>
+
+                  <div class="form-group">
+                    <input name="domicilio1" #domicilio1="ngModel" [(ngModel)]="service.formData.domicilio1"
+                      class="form-control" placeholder="Domicilio">
+                  </div>
+
+
+                  <div class="form-group">
+                    <input name="celular1" #celular1="ngModel" [(ngModel)]="service.formData.celular1"
+                      class="form-control" placeholder="Celular">
+                  </div>
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+
+              <nb-accordion-item>
+                  <nb-accordion-item-header>Datos de Enlace 2</nb-accordion-item-header>
+                  <nb-accordion-item-body>
+                      <div class="form-group">
+                          <input name="enlace2" #enlace2="ngModel" [(ngModel)]="service.formData.enlace2" class="form-control"
+                            placeholder="Enlace">
+                        </div>
+                    <div class="form-group">
+                      <input name="telefono2" #telefono2="ngModel" [(ngModel)]="service.formData.telefono2"
+                        class="form-control" placeholder="Teléfono">
+                    </div>
+  
+                    <div class="form-group">
+                      <input name="correo2" #correo2="ngModel" [(ngModel)]="service.formData.correo2" class="form-control"
+                        placeholder="Correo">
+                    </div>
+  
+                    <div class="form-group">
+                      <input name="domicilio2" #domicilio2="ngModel" [(ngModel)]="service.formData.domicilio2"
+                        class="form-control" placeholder="Domicilio">
+                    </div>
+  
+  
+                    <div class="form-group">
+                      <input name="celular2" #celular2="ngModel" [(ngModel)]="service.formData.celular2"
+                        class="form-control" placeholder="Celular">
+                    </div>
+                  </nb-accordion-item-body>
+                </nb-accordion-item>
+
+                <nb-accordion-item>
+                    <nb-accordion-item-header>Datos de Enlace 3</nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <div class="form-group">
+                            <input name="enlace3" #enlace3="ngModel" [(ngModel)]="service.formData.enlace3" class="form-control"
+                              placeholder="Enlace">
+                          </div>
+                      <div class="form-group">
+                        <input name="telefono3" #telefono3="ngModel" [(ngModel)]="service.formData.telefono3"
+                          class="form-control" placeholder="Teléfono">
+                      </div>
+    
+                      <div class="form-group">
+                        <input name="correo3" #correo3="ngModel" [(ngModel)]="service.formData.correo3" class="form-control"
+                          placeholder="Correo">
+                      </div>
+    
+                      <div class="form-group">
+                        <input name="domicilio3" #domicilio3="ngModel" [(ngModel)]="service.formData.domicilio3"
+                          class="form-control" placeholder="Domicilio">
+                      </div>
+    
+    
+                      <div class="form-group">
+                        <input name="celular3" #celular3="ngModel" [(ngModel)]="service.formData.celular3"
+                          class="form-control" placeholder="Celular">
+                      </div>
+                    </nb-accordion-item-body>
+                  </nb-accordion-item>
+            </nb-accordion>
+          </div>
+        
+         
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+ <!-- <table class="table table-striped">
+  <thead>
+   
+    
+    <th>Fecha Asignada</th>
+    <th>Fecha Limite</th>
+    <th>Descripción de tarea </th>
+    <th>Responsable</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of list">
+       <td (click)="onEdit(emp)">{{emp.id}}</td> 
+      
+      <td>{{emp.fechaasig}}</td>
+      <td>{{emp.fechalim}}</td>
+      <td>{{emp.tarea}}</td>
+      <td>{{emp.responsable}}</td>
+      <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>  -->
+
+<div class="row">
+    <div class="col-md-12">
+        <ng2-smart-table width = "100%" 
+        [settings]="settings" 
+        [source]="list" >
+        </ng2-smart-table>
+    </div>
+  </div>
+
+  

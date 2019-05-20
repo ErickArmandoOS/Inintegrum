@@ -1,0 +1,32 @@
+<!-- <table class="table table-striped">
+  <thead>
+    <!-- <th>Id</th> 
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Rol</th>
+    <th>Contraseña</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of list">
+      <!-- <td (click)="onEdit(emp)">{{emp.id}}</td> 
+      <td>{{emp.nombre}} {{emp.apaterno}} {{emp.amaterno}}</td>
+      <td>{{emp.correo}}</td>
+      <td>{{emp.rol}}</td>
+      <td>{{emp.contrasena}}</td>
+      <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+<div class="row">
+  <div class="col-md-12">
+      <ng2-smart-table width = "100%" 
+      [settings]="settings" 
+      [source]="list" 
+      (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+  </div>
+</div>

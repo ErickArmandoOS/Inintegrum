@@ -1,0 +1,202 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Asuntos
+      </nb-card-header>
+      <nb-card-body>
+        <!-- encabezado -->
+        <div class="row">
+          <div class="col-md-6">
+            <button data-toggle="modal" data-target="#asuntosModal" class="btn btn-primary" (click)="obtEmpresas()"  >Crear Asunto</button>
+          </div>
+          
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <ngx-asunto-list></ngx-asunto-list>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<!-- <div class="typeHead">
+  
+  <datalist id="emp">
+      <select>
+          <option *ngFor="let empresa of empresas | async" [value]="emprea.nombre"></option>
+      </select>
+  </datalist>
+</div> -->
+
+<!-- Modal -->
+
+<div class="modal fade" id="asuntosModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Crear Asunto</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+          <div class="form-group">
+            <input name="control" #control="ngModel" [(ngModel)]="service.formData.control" class="form-control"
+              placeholder="Control" required>
+            <div *ngIf="control.invalid && control.touched" class="validation-error">This field is required.</div>
+          </div>
+
+          <div class="form-group">
+            <input name="expediente" #expediente="ngModel" [(ngModel)]="service.formData.expediente"
+              class="form-control" placeholder="Expediente">
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group  col-md-6">
+              <label for="sel1">Seleccionar Empresa:</label>
+              <select class="form-control" name="empresa" #empresa="ngModel" [(ngModel)]="service.formData.empresa"
+                class="form-control" id="sel1">
+                <option value="">Selecciona una</option>
+                <option *ngFor="let empresa of empresas | async">
+                  {{empresa.nombre}}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group  col-md-6">
+              <label for="sel1">Ubicación:</label>
+              <select class="form-control" name="ubicacion" #ubicacion="ngModel"
+                [(ngModel)]="service.formData.ubicacion" class="form-control" id="sel1" >
+                <!-- de las usarios creadas agragar un ngFor -->
+                <option class="hybCat" *ngFor="let usuario of usuarios | async">
+                    {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}} 
+                </option>
+                
+                <option>AUDIENCIA</option>
+                <option>DORMIDO</option>
+                <option>REPORTE</option>
+                <option>MUERTO</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <input name="actor" #actor="ngModel" [(ngModel)]="service.formData.actor" class="form-control"
+                placeholder="Actor">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group  col-md-6">
+              <label for="sel1">Ciudad:</label>
+              <select class="form-control" name="ciudad" #ciudad="ngModel" [(ngModel)]="service.formData.ciudad"
+                class="form-control" id="sel1">
+                <!-- de las empresas creadas agragar un ngFor -->
+                <option>CHIHUAHUA</option>
+                <option>CUAUHTÉMOC</option>
+                <option>DELICIAS</option>
+                <option>JUÁREZ</option>
+                <option>MONTERREY</option>
+                <option>PARRAL</option>
+                <option>TORREÓN</option>
+              </select>
+            </div>
+
+            <div class="form-group  col-md-6">
+              <label for="sel1">Junta:</label>
+              <select class="form-control" name="junta" #junta="ngModel" [(ngModel)]="service.formData.junta"
+                class="form-control" id="sel1">
+                <option>JUNTA LOCAL 01</option>
+                <option>JUNTA LOCAL 02</option>
+                <option>JUNTA LOCAL 03</option>
+                <option>JUNTA LOCAL 04</option>
+                <option>JUNTA LOCAL 05</option>
+                <option>JUNTA FEDERAL 26</option>
+                <option>JUNTA FEDERAL 55</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group  col-md-12">
+              <label for="sel1">Estatus:</label>
+              <select class="form-control" name="estatus" #estatus="ngModel" [(ngModel)]="service.formData.estatus"
+                class="form-control" id="sel1">
+                <option>ALEGATOS</option>
+                <option>AMPARO</option>
+                <option>ACUMULADO</option>
+                <option>CERTIFICACIÓN</option>
+                <option>CONVENIO</option>
+                <option>DESAHOGO</option>
+                <option>DICTÁMEN</option>
+                <option>EJECUCIÓN</option>
+                <option>EN ESPERA DE NUEVA FECHA</option>
+                <option>INICIAL</option>
+                <option>INSTRUCCIÓN</option>
+                <option>LAUDO</option>
+                <option>PARA PROMOVEER</option>
+                <option>RESERVA DE CALIFICACIÓN</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group  col-md-12">
+              <label for="sel1">Acción:</label>
+              <select class="form-control" name="accion" #accion="ngModel" [(ngModel)]="service.formData.accion"
+                class="form-control" id="sel1">
+
+                <option>CUOTAS OBRERO PATRONALES</option>
+                <option>INDEMNIZACIÓN CONSTITUCIONAL</option>
+                <option>IPP</option>
+                <option>PAGO FINIQUITO</option>
+                <option>PAGO FONDO DE AHORRO</option>
+                <option>PAGO PTU</option>
+                <option>PAGO TIEMPO EXTRAORDINARIO</option>
+                <option>RECONOCIMIENTO DE ANTIGÜEDAD</option>
+                <option>REINSTALACIÓN</option>
+                <option>RESCISIÓN</option>
+
+              </select>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info"
+              onclick="$('.modal').modal('hide')">Guardar</button>
+          </div>
+
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
