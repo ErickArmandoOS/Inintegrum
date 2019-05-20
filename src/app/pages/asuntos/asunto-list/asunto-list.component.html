@@ -1,0 +1,48 @@
+<!-- <div class="row">
+  <div class="col-md-12">
+
+    
+
+    <table class="table table-striped">
+      <thead>
+        <th scope="col" sortable="control" (sort)="onSort($event)">Control</th>
+        <th scope="col" sortable="expediente" (sort)="onSort($event)">Expediente</th>
+        <th scope="col" sortable="empresa" (sort)="onSort($event)">Empresa</th>
+        <th scope="col" sortable="ciudad" (sort)="onSort($event)">Ciudad</th>
+        <th scope="col" sortable="junta" (sort)="onSort($event)">Junta</th>
+        <th scope="col" sortable="ubicacion" (sort)="onSort($event)">Ubicaciones</th>
+        <th scope="col" sortable="estatus" (sort)="onSort($event)">Estatus</th>
+        <th scope="col" sortable="accion" (sort)="onSort($event)">Acción</th>
+        <th>Opciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asu of list; let i=index" >          
+            <a (click)="getOnce(asu.control)" href="#/pages/asunto" title="Ver Asunto">
+              <td>{{asu.control}}</td>
+            </a>
+
+          <td>{{asu.expediente}}</td>
+          <td>{{asu.empresa}}</td>
+          <td>{{asu.ciudad}}</td>
+          <td>{{asu.junta}}</td>
+          <td>{{asu.ubicacion}}</td>
+          <td>{{asu.estatus}}</td>
+          <td>{{asu.accion}}</td>
+          <td><a class="btn text-danger" (click)="onDelete(asu.id)"><i class="fa fa-trash"></i></a></td>
+        </tr>
+
+        
+      </tbody>
+    </table>
+
+  </div>
+</div> -->
+
+
+<!-- Tabla de todos los asuntos -->
+<div class="row">
+  <div class="col-md-12">
+    <ng2-smart-table width="100%" [settings]="settings" [source]="list">
+    </ng2-smart-table>
+  </div>
+</div>

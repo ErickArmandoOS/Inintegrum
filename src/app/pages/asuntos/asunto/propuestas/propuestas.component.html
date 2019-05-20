@@ -1,0 +1,160 @@
+<div class="row">
+  <div class="col-md-6">
+    <br>
+    <br>
+    <button data-toggle="modal" data-target="#propuestaModal" class="btn btn-primary" (click)="obtControlNo()">Crear
+      Propuesta</button>
+
+    <br>
+    <br>
+  </div>
+
+
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <ngx-propuestas-list></ngx-propuestas-list>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="modal fade" id="propuestaModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Crear Suceso</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+          <div class="form-group">
+            <label for="sel1">Seleccionar Control:</label>
+            <select name="control" #control="ngModel" [(ngModel)]="service.formData.control" class="form-control"
+              required>
+              <option value="">Selecciona una</option>
+              <option *ngFor="let asunto of asuntos | async">
+                {{asunto.control}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="date" name="fecha" #fecha="ngModel" [(ngModel)]="service.formData.fecha" class="form-control"
+              placeholder="Fecha">
+          </div>
+
+          <div class="form-group">
+            <input name="cantidad" #cantidad="ngModel" [(ngModel)]="service.formData.cantidad" class="form-control"
+              placeholder="Cantidad">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputGroupSelect04">Autoriza: </label>
+              <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
+                name="autoriza" #autoriza="ngModel" [(ngModel)]="service.formData.autoriza" class="form-control">
+                <option value="EGM">EGM</option>
+                <option value="RICM">RICM</option>
+                <option value="SALS">SALS</option>
+                <option value="SVC">SVC</option>
+                <option value="TAPV">TAPV</option>
+              </select>
+            </div>
+          </div>
+
+
+
+          <div class="form-row">
+            <!-- <div class="form-group  col-md-6">
+              <label for="sel1">Abogado Receptor: </label>
+              <select class="form-control" name="abogado" #abogado="ngModel" [(ngModel)]="service.formData.abogado"
+                class="form-control" id="sel1">
+                <option>AEF</option>
+                <option>AHG</option>
+                <option value="">AKRC</option>
+                <option value="">BGGM</option>
+                <option value="">DAJL</option>
+                <option value="">FAD</option>
+                <option value="">LFNL</option>
+              </select>
+            </div> -->
+
+            <div class="form-row">
+              <div class="form-group  col-md-12">
+                <label for="sel1">Atendió:</label>
+                <select class="form-control" name="abogado" #abogado="ngModel"
+                  [(ngModel)]="service.formData.abogado" class="form-control" id="sel1" >
+                  <!-- de las usarios creadas agragar un ngFor -->
+                  <option value="">Quien Atendió:  </option>
+                  <option class="hybCat" *ngFor="let usuario of usuarios | async">
+                      {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}}
+                  </option>
+   
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group  col-md-6">
+              <label for="sel1">Medio: </label>
+              <select class="form-control" name="medio" #medio="ngModel" [(ngModel)]="service.formData.medio"
+                class="form-control" id="sel1">
+                <option>CORREO ELECTRÓNICO</option>
+                <option>LLAMADA</option>
+                <option value="">MENSAJE DE TEXTO</option>
+                <option value="">PERSONAL</option>
+                <option value="">WPP</option>
+              </select>
+            </div>
+          </div>
+
+
+
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="comempresa">Comentarios de la Empresa</label>
+              <textarea nbInput fullWidth shape="semi-round" placeholder="Comentarios" name="comempresa"
+                #comempresa="ngModel" [(ngModel)]="service.formData.comempresa"></textarea>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="comabogado">Comentarios del Abogado</label>
+              <textarea nbInput fullWidth shape="semi-round" placeholder="Comentarios" name="comabogado"
+                #comabogado="ngModel" [(ngModel)]="service.formData.comabogado"></textarea>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info"
+              onclick="$('.modal').modal('hide')">Guardar</button>
+          </div>
+
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

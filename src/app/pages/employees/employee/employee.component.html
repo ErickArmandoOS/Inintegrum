@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-6">
+    <button data-toggle="modal" data-target="#usuariosModal" class="btn btn-primary" (click)="onClick()">Crear usuario</button>
+  </div>
+</div>
+<br>
+<br>
+
+
+<div class="modal fade" id="usuariosModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Agregar Usuario</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+
+          <div class="form-group">
+            <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre" class="form-control"
+              placeholder="Nombre" required>
+            <div *ngIf="nombre.invalid && nombre.touched" class="validation-error">This field is required.</div>
+          </div>
+
+          <div class="form-group">
+            <input name="apaterno" #apaterno="ngModel" [(ngModel)]="service.formData.apaterno" class="form-control"
+              placeholder="Apellido Paterno">
+          </div>
+
+          <div class="form-group">
+            <input name="amaterno" #amaterno="ngModel" [(ngModel)]="service.formData.amaterno" class="form-control"
+              placeholder="Apellido Materno">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group  col-md-6">
+              <input name="contrasena" #contrasena="ngModel" [(ngModel)]="service.formData.contrasena"
+                class="form-control" placeholder="Contraseña">
+            </div>
+
+            <div class="form-group  col-md-6">
+              <input name="correo" #correo="ngModel" [(ngModel)]="service.formData.correo" class="form-control"
+                placeholder="Correo">
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group  col-md-12">
+              <label for="sel1">Elegir Rol Del Usuario:</label>
+              <select class="form-control" name="rol" #rol="ngModel" [(ngModel)]="service.formData.rol"
+                class="form-control" id="sel1">
+                <option>ADMINISTRADOR</option>
+                <option>INTERNO ICL </option>
+              </select>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info" onclick="$('.modal').modal('hide')">Guardar</button>
+          </div>
+
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

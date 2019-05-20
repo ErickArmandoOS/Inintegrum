@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-md-6">
+    <br>
+    <br>
+    <button data-toggle="modal" data-target="#sucesosModal" class="btn btn-primary" (click)="obtControlNo()">Crear Suceso</button>
+    <br>
+    <br>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ngx-sucesos-list></ngx-sucesos-list>
+  </div>
+</div>
+
+
+<div class="modal fade" id="sucesosModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-w-bold" id="lineModalLabel">Crear Suceso</h3>
+      </div>
+      <div class="modal-body">
+
+        <!-- content goes here -->
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+          
+          <div class="form-group">
+            <label for="sel1">Seleccionar Control:</label>
+            <select name="control" #control="ngModel" [(ngModel)]="service.formData.control" class="form-control"
+              required>
+              <option value="">Selecciona una</option>
+              <option *ngFor="let asunto of asuntos | async">
+                {{asunto.control}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input name="numero" #numero="ngModel" [(ngModel)]="service.formData.numero" class="form-control"
+              placeholder="Número">
+          </div>
+
+
+          <div class="form-group">
+              <input name="empresa" #empresa="ngModel" [(ngModel)]="service.formData.empresa" class="form-control"
+                placeholder="Empresa" >
+                
+            </div>
+
+          <div class="form-group">
+            <input type="date" name="fecha" #fecha="ngModel" [(ngModel)]="service.formData.fecha" class="form-control"
+              placeholder="Fecha">
+          </div>
+
+          <div class="form-group">
+            <!-- <input name="suceso" #suceso="ngModel" [(ngModel)]="service.formData.suceso" class="form-control"
+                placeholder="Tipo de Suceso"> -->
+
+                
+            <label for="typeahead-focus">Seleccionar Suceso/Diligencia: </label>
+            <input id="typeahead-focus" type="text" class="form-control dropdown-menu" [ngbTypeahead]="search"
+              (focus)="focus$.next($event.target.value)" (click)="click$.next($event.target.value)"
+              #instance="ngbTypeahead" name="suceso" #suceso="ngModel" [(ngModel)]="service.formData.suceso"
+              class="form-control">
+             
+
+            <!-- <input id="typeahead-format" type="text" class="form-control" name="suceso" #suceso="ngModel"
+              [(ngModel)]="service.formData.suceso" [ngbTypeahead]="search" [resultFormatter]="formatter"
+              placeholder="Suceso/Diligencia" />
+            <hr>
+            <pre>Model: {{ model | json }}</pre> -->
+          </div>
+
+          <!-- <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="sel1">Atendió:</label>
+              <select class="form-control" name="atendio" #atendio="ngModel" [(ngModel)]="service.formData.atendio"
+                class="form-control" id="sel1">
+                <option>EGM</option>
+                <option>RICM</option>
+                <option>SALS</option>
+                <option>SVC</option>
+                <option>TAPV</option>
+              </select>
+            </div>
+          </div> -->
+
+          <div class="form-row">
+            <div class="form-group  col-md-12">
+              <label for="sel1">Atendió:</label>
+              <select class="form-control" name="atendio" #atendio="ngModel"
+                [(ngModel)]="service.formData.atendio" class="form-control" id="sel1" >
+                <!-- de las usarios creadas agragar un ngFor -->
+                <option value="">Quien Atendió:  </option>
+                <option class="hybCat" *ngFor="let usuario of usuarios | async">
+                  {{usuario.nombre}} {{usuario.apaterno}} {{usuario.amaterno}}
+                </option>
+ 
+              </select>
+            </div>
+          </div>
+          
+
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="desc">Descripción</label>
+              <textarea nbInput fullWidth shape="semi-round" placeholder="Descripción" name="desc" #desc="ngModel"
+                [(ngModel)]="service.formData.desc"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info" onclick="$('.modal').modal('hide')">Guardar</button>
+          </div>
+
+        </form>
+
+
+        <!-- fin del contenido -->
+
+
+        <div class="modal-footer">
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

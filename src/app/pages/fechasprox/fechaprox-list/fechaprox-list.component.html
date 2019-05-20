@@ -1,0 +1,34 @@
+<!-- <table class="table table-striped">
+  <thead>
+    <!-- <th>Id</th> --
+    <th>Hora</th>
+    <th>Fecha </th>
+    <th>Diligencia</th>
+    <th>Con Cargo A</th>
+    <th>Lugar</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of list">
+      <!-- <td (click)="onEdit(emp)">{{emp.id}}</td> --
+      <td>{{emp.hora}}</td>
+      <td>{{emp.fechap}}</td>
+      <td>{{emp.diligencia}}</td>
+      <td>{{emp.concargoa}}</td>
+      <td>{{emp.lugar}}</td>
+      <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <ng2-smart-table width = "100%" 
+        [settings]="settings" 
+        [source]="list" 
+        
+        
+        >
+        </ng2-smart-table>
+    </div>
+  </div>
